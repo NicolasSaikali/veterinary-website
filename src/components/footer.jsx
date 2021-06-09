@@ -23,7 +23,7 @@ export default function footer() {
               </li>
               <li className="list-unstyled mb-2">
                 <a
-                  href="/blog"
+                  href="#blog"
                   className="text-decoration-none text-light fs-5"
                 >
                   BLOG
@@ -39,7 +39,7 @@ export default function footer() {
               </li>
               <li className="list-unstyled mb-2">
                 <a
-                  href="/contact"
+                  href="#contact"
                   className="text-decoration-none text-light fs-5"
                 >
                   CONTACT

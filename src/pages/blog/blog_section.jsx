@@ -26,7 +26,12 @@ export default function BlogSection(props) {
     });
   }, []);
   return (
-    <div className={`w-100 p-0 Blog py-4 ${!BlogLoaded && "text-center"}`}>
+    <div
+      className={`w-100 p-0 Blog section-padding ${
+        !BlogLoaded && "text-center"
+      }`}
+      id="blog"
+    >
       <div className="section-title">
         <h1>Our Blog</h1>
       </div>

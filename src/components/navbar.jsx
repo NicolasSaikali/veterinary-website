@@ -84,9 +84,9 @@ export default function Navbar(props) {
             </div>
             <div className="expandable">
               <Link to="/">Home</Link>
-              <Link to="#blog">Blog</Link>
+              <a href="#blog">Blog</a>
               <Link to="/track-order">Track</Link>
-              <Link to="#contact">Contact</Link>
+              <a href="#contact">Contact</a>
               <Link to="/cart">
                 <div className="d-inline-block mx-3">
                   <div className="cart-nav position-relative">

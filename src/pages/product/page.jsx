@@ -98,7 +98,13 @@ export default function ProductPage(props) {
                       </div>
                     ) : (
                       <div className="d-flex justify-content-between">
-                        <strong style={{ fontSize: "20px" }}>{count}</strong>
+                        <strong style={{ fontSize: "20px" }}>
+                          {
+                            ctx.cart[
+                              ctx.cart.findIndex((p) => p.obj.id === product.id)
+                            ].count
+                          }
+                        </strong>
 
                         <button
                           className="border-0 text-light bg-danger p-3 position-relative float-right"

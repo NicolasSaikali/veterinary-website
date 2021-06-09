@@ -48,6 +48,19 @@ export default function ProductsSection(props) {
         backgroundImage: `url("./assets/shopping-bag.png")`,
       }}
     >
+      <img
+        src="assets/petfeet.png"
+        alt=""
+        style={{
+          position: "absolute",
+          left: 0,
+          bottom: 0,
+          opacity: 0.1,
+          width: "50%",
+          height: "auto",
+          transform: "rotate(180deg) translate(50%,-20%)",
+        }}
+      />
       <div className="section-title">
         <h1>Our Products</h1>
       </div>
@@ -79,6 +92,7 @@ export default function ProductsSection(props) {
           {products.map((product, i) => (
             <SwiperSlide key={`slides_products_${i}`}>
               <ProductGrid product={product} />
+              <div className="swiper-pagination"></div>
             </SwiperSlide>
           ))}
         </Swiper>
