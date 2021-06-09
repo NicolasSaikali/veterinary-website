@@ -13,6 +13,7 @@ import TopSlider from "./top_slider";
 import Checkout from "./../pages/checkout";
 import TrackOrder from "../pages/track_order";
 import Footer from "./../components/footer";
+import ProductPage from "../pages/product/page";
 
 export default function Navbar(props) {
   const [ctx, setctx] = [
@@ -103,6 +104,7 @@ export default function Navbar(props) {
         <Switch>
           <Route path="/track-order" exact component={TrackOrder} />
           <Route path="/checkout" exact component={Checkout} />
+          <Route path="/product" exact component={ProductPage} />
           <Route path="/cart" exact component={Cart} />
           <Route
             render={({ location }) =>

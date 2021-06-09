@@ -1233,3 +1233,8 @@ transition:padding-bottom 500ms;
 .blog-image-wrapper:hover .blog-caption{
     opacity:1;
 }
+.fa-cart-plus,
+.fa-trash-o,.fa-eye{
+    font-size:30px !important;
+    padding:10px;
+}

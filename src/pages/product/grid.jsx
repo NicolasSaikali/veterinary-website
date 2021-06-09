@@ -1,12 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { globalStateContext, dispatchStateContext } from "./../../context";
-
+import { Link } from "react-router-dom";
 export default function ProductGrid(props) {
   const [ctx, setctx] = [
     React.useContext(globalStateContext),
     React.useContext(dispatchStateContext),
   ];
+  const [imageURL, setImageURL] = useState(null);
   const [selected, setSelected] = useState(false);
+  useEffect(() => {
+    if (props.product.data().images.length === 0) return;
+    ctx.firebase
+      .storage()
+      .ref("/" + props.product.data().images[0].split("/")[0])
+      .child(props.product.data().images[0].split("/")[1])
+      .getDownloadURL()
+      .then((url) => {
+        setImageURL(url);
+      });
+  });
   useEffect(() => {
     if (ctx.cart.findIndex((x) => x.obj.id === props.product.id) !== -1)
       setSelected(true);
@@ -15,11 +27,7 @@ export default function ProductGrid(props) {
   return (
     <div className="product-grid">
       <div className="position-absolute product-content">
-        <img
-          src="https://picsum.photos/600/600"
-          alt=""
-          className="product-image"
-        />
+        <img src={imageURL} alt="" className="product-image" />
         <div className="product-info">
           <div className="d-flex justify-content-between align-items-center px-2">
             <div className="d-inline p-2">
@@ -28,7 +36,17 @@ export default function ProductGrid(props) {
                 {props.product.data().price} L.L.
               </div>
             </div>
-            <div className="d-flex justify-content-between">
+            <div className="d-flex justify-content-between align-items-center">
+              <Link
+                to={{
+                  pathname: `/product`,
+                  state: {
+                    id: props.product.id,
+                  },
+                }}
+              >
+                <div className="fa fa-eye color-dark"></div>
+              </Link>
               {selected ? (
                 <i
                   className="fa fa-trash-o text-danger fs-5"
