@@ -30,6 +30,7 @@ const functions = require("firebase-functions");
 const auth = firebase.auth();
 
 export const defaultGlobalState = {
+  navOpen: false,
   countUpdate: 0,
   total: 0,
   triggerCart: "",

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 export default function WhyChooseUs() {
   return (
-    <div className="section-padding">
+    <div className="section-padding why-choose-us">
       <img
         src="assets/petfeet.png"
         alt=""
@@ -24,8 +24,8 @@ export default function WhyChooseUs() {
             <div className="d-block mb-3 text-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="200"
-                height="200"
+                width="125"
+                height="125"
                 viewBox="0 0 24 24"
                 fill="none"
                 style={{ stroke: "var(--green-darker)" }}
@@ -50,8 +50,8 @@ export default function WhyChooseUs() {
             <div className="d-block mb-3 text-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="200"
-                height="200"
+                width="125"
+                height="125"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="var(--green-darker)"
@@ -74,8 +74,8 @@ export default function WhyChooseUs() {
             <div className="d-block mb-3 text-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="200"
-                height="200"
+                width="125"
+                height="125"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="var(--green-darker)"

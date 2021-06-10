@@ -37,14 +37,12 @@ export default function Cart(props) {
               {ctx.cart.length === 0 ? (
                 <div>
                   <div>Your cart is currently empty</div>
-                  <Router>
-                    <Link
-                      to="/#shop"
-                      className="btn bg-green-dark e-text-light my-3"
-                    >
-                      Browse Products
-                    </Link>
-                  </Router>
+                  <Link
+                    to="/#products"
+                    className="btn bg-green-dark e-text-light my-3"
+                  >
+                    Browse Products
+                  </Link>
                 </div>
               ) : (
                 ctx.cart.map((product, i) => (
@@ -88,14 +86,15 @@ export default function Cart(props) {
                         proceed to checkout
                       </button>
                     </Link>
-                    <button
+                    <Link
+                      to="/"
                       onClick={() => {
                         setctx({ ...ctx, cartOpen: false });
                       }}
                       className="d-block btn-custom text-uppercase bg-secondary text-light border-0 p-2 w-100 w-md-custom mt-2"
                     >
                       go back
-                    </button>
+                    </Link>
                   </div>
                 )}
               </div>

@@ -10,6 +10,7 @@ export default function Checkout() {
     React.useContext(globalStateContext),
     React.useContext(dispatchStateContext),
   ];
+  const [shouldEmpty, setShouldEmpty] = useState(false);
   const [data, setData] = useState({
     firstname: "",
     lastname: "",
@@ -66,6 +67,8 @@ export default function Checkout() {
       })
       .then((response) => {
         console.log(response);
+        setctx({ ...ctx, cart: [] });
+        setShouldEmpty(true);
         setOrderPlaced(false);
       });
   };
@@ -81,6 +84,10 @@ export default function Checkout() {
         <div className="d-flex justify-content-center pb-4">
           <div style={{ width: 500, maxWidth: "95%" }}>
             <input
+              value={shouldEmpty ? "" : data.firstname}
+              onFocus={() => {
+                setShouldEmpty(false);
+              }}
               onChange={(e) => {
                 setData({ ...data, firstname: e.target.value });
               }}
@@ -93,6 +100,10 @@ export default function Checkout() {
               placeholder="First Name"
             />
             <input
+              value={shouldEmpty ? "" : data.lastname}
+              onFocus={() => {
+                setShouldEmpty(false);
+              }}
               onChange={(e) => {
                 setData({ ...data, lastname: e.target.value });
               }}
@@ -105,6 +116,10 @@ export default function Checkout() {
               placeholder="Last Name"
             />
             <input
+              value={shouldEmpty ? "" : data.email}
+              onFocus={() => {
+                setShouldEmpty(false);
+              }}
               onChange={(e) => {
                 setData({ ...data, email: e.target.value });
               }}
@@ -117,6 +132,10 @@ export default function Checkout() {
               placeholder="Email"
             />
             <input
+              value={shouldEmpty ? "" : data.phone}
+              onFocus={() => {
+                setShouldEmpty(false);
+              }}
               onChange={(e) => {
                 setData({ ...data, phone: e.target.value });
               }}
@@ -129,6 +148,10 @@ export default function Checkout() {
               placeholder="Phone"
             />
             <textarea
+              onFocus={() => {
+                setShouldEmpty(false);
+              }}
+              defaultValue={shouldEmpty ? "" : data.address}
               onChange={(e) => {
                 setData({ ...data, address: e.target.value });
               }}
@@ -164,6 +187,10 @@ export default function Checkout() {
             <h4 className="mb-4 mt-3">Payment Method</h4>
             <div className="d-block mb-1">
               <input
+                value={shouldEmpty ? "" : data.firstname}
+                onFocus={() => {
+                  setShouldEmpty(false);
+                }}
                 type="radio"
                 name="payment"
                 id="cash"
@@ -176,6 +203,10 @@ export default function Checkout() {
             </div>
             <div className="d-block">
               <input
+                value={shouldEmpty ? "" : data.firstname}
+                onFocus={() => {
+                  setShouldEmpty(false);
+                }}
                 type="radio"
                 name="payment"
                 id="card"
@@ -189,6 +220,10 @@ export default function Checkout() {
             {data.paymentMethod === "card" ? (
               <div className="pt-3">
                 <input
+                  value={shouldEmpty ? "" : data.firstname}
+                  onFocus={() => {
+                    setShouldEmpty(false);
+                  }}
                   onChange={(e) => {
                     setData({
                       ...data,
@@ -207,6 +242,10 @@ export default function Checkout() {
                   placeholder="Card No."
                 />
                 <input
+                  value={shouldEmpty ? "" : data.firstname}
+                  onFocus={() => {
+                    setShouldEmpty(false);
+                  }}
                   onChange={(e) => {
                     setData({
                       ...data,

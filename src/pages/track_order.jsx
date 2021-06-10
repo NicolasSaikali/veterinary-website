@@ -46,7 +46,7 @@ export default function TrackOrder() {
   return (
     <div>
       <TopSlider />
-      <div className="container track-order">
+      <div className="container track-order fade-in">
         <div className="section-padding">
           <h1>
             <strong className="text-uppercase">Track order</strong>

@@ -21,18 +21,18 @@ function App() {
   ];
 
   useEffect(() => {
-    window.addEventListener("scroll", function () {
-      console.log(lastScrollY, window.pageYOffset);
-      if (lastScrollY > window.pageYOffset && window.pageYOffset > 200) {
-        document.querySelectorAll(".navbar-custom").forEach((elt) => {
-          elt.classList.add("sticky-top");
-        });
-      } else if (lastScrollY > window.pageYOffset)
-        document.querySelectorAll(".navbar-custom").forEach((elt) => {
-          elt.classList.remove("sticky-top");
-        });
-      lastScrollY = window.pageYOffset;
-    });
+    // window.addEventListener("scroll", function () {
+    //   console.log(lastScrollY, window.pageYOffset);
+    //   if (lastScrollY > window.pageYOffset && window.pageYOffset > 200) {
+    //     document.querySelectorAll(".navbar-custom").forEach((elt) => {
+    //       elt.classList.add("sticky-top");
+    //     });
+    //   } else if (lastScrollY > window.pageYOffset)
+    //     document.querySelectorAll(".navbar-custom").forEach((elt) => {
+    //       elt.classList.remove("sticky-top");
+    //     });
+    //   lastScrollY = window.pageYOffset;
+    // });
   }, []);
 
   return (

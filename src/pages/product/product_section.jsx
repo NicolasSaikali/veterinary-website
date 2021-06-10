@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ProductGrid from "./grid";
 import Loader from "./../../components/loader";
 import { globalStateContext, dispatchStateContext } from "././../../context";
-
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 export default function ProductsSection(props) {
   const [productsLoaded, setProductsLoaded] = useState(false);
   const [products, setProducts] = useState([]);
@@ -41,7 +42,8 @@ export default function ProductsSection(props) {
   };
   return (
     <div
-      className={`container section-padding py-4 ${
+      id="products"
+      className={`container products section-padding  ${
         !productsLoaded && "text-center"
       }`}
       style={{
@@ -66,7 +68,12 @@ export default function ProductsSection(props) {
       </div>
       {productsLoaded ? (
         <Swiper
+          loop
+          autoplay={{
+            delay: 3000,
+          }}
           centeredSlides={true}
+          pagination={{ clickable: true }}
           breakpoints={{
             // when window width is >= 640px
             0: {
@@ -95,6 +102,7 @@ export default function ProductsSection(props) {
               <div className="swiper-pagination"></div>
             </SwiperSlide>
           ))}
+          <div className="swiper-pagination d-block"></div>
         </Swiper>
       ) : (
         <Loader />

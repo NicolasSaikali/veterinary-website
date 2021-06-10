@@ -49,7 +49,9 @@ export default function ProductPage(props) {
                 <img
                   src={imageURL}
                   alt=""
-                  className="main-product-image w-100 h-100"
+                  className={`main-product-image w-100 h-100 ${
+                    product.data().stock_no === "0" && "grayscale"
+                  }`}
                 />
               </div>
               <div className="col-lg-6 pt-3 pt-lg-0">
@@ -60,8 +62,10 @@ export default function ProductPage(props) {
                     {product.data().price} L.L.
                   </div>
                   <div className="col-12 pt-3">
-                    {ctx.cart.findIndex((p) => p.obj.id === product.id) ===
-                    -1 ? (
+                    {product.data().stock_no === "0" ? (
+                      <h3 className="text-uppercase text-dark">out of stock</h3>
+                    ) : ctx.cart.findIndex((p) => p.obj.id === product.id) ===
+                      -1 ? (
                       <div className="d-flex justify-content-between align-items-center">
                         <div class="d-flex align-items-center">
                           <div

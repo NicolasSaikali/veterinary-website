@@ -32,18 +32,34 @@ export default function Navbar(props) {
             <div className="row justify-content-between">
               <div className="col-6 text-left">BRAND</div>
               <div className="col-6 text-right d-flex justify-content-end">
-                <Link to="/" className="ml-3">
+                <Link
+                  onClick={() => {
+                    window.scroll({
+                      top: 0,
+                      behavior: "smooth",
+                    });
+                    setctx({ ...ctx, navOpen: false });
+                  }}
+                  to="/"
+                  className="ml-3"
+                >
                   Home
                 </Link>
-                <Link className="ml-3" to="#blog">
+                <a
+                  onClick={() => {
+                    setctx({ ...ctx, navOpen: false });
+                  }}
+                  className="ml-3"
+                  href="/#blog"
+                >
                   Blog
-                </Link>
+                </a>
                 <Link className="ml-3" to="/track-order">
                   Track
                 </Link>
-                <Link className="ml-3" to="#contact">
+                <a className="ml-3" href="/#contact">
                   Contact
-                </Link>
+                </a>
                 <Link to="/cart">
                   <div className="d-inline-block">
                     <div className="cart-nav position-relative">
@@ -61,7 +77,7 @@ export default function Navbar(props) {
 
         <div
           className={`navbar-custom mobile d-block d-lg-none ${
-            mobileEngaged && "engaged"
+            ctx.navOpen && "engaged"
           }`}
         >
           <div className="container">
@@ -72,7 +88,8 @@ export default function Navbar(props) {
                   <div
                     className="burger"
                     onClick={() => {
-                      setMobileEngaged(!mobileEngaged);
+                      let tmp = ctx.navOpen;
+                      setctx({ ...ctx, navOpen: !tmp });
                     }}
                   >
                     <span className="top"></span>
@@ -83,11 +100,30 @@ export default function Navbar(props) {
               </div>
             </div>
             <div className="expandable">
-              <Link to="/">Home</Link>
-              <a href="#blog">Blog</a>
-              <Link to="/track-order">Track</Link>
-              <a href="#contact">Contact</a>
-              <Link to="/cart">
+              <Link
+                onClick={() => {
+                  setctx({ ...ctx, navOpen: false });
+                }}
+                to="/"
+              >
+                Home
+              </Link>
+              <a href="/#blog">Blog</a>
+              <Link
+                onClick={() => {
+                  setctx({ ...ctx, navOpen: false });
+                }}
+                to="/track-order"
+              >
+                Track
+              </Link>
+              <a href="/#contact">Contact</a>
+              <Link
+                onClick={() => {
+                  setctx({ ...ctx, navOpen: false });
+                }}
+                to="/cart"
+              >
                 <div className="d-inline-block mx-3">
                   <div className="cart-nav position-relative">
                     CART
