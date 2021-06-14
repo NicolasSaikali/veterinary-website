@@ -4,6 +4,8 @@ import TopSlider from "./../components/top_slider";
 import { useLocation } from "react-router";
 import ConfirmModal from "./../components/confirmModal";
 import Loader from "./../components/loader";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export default function Checkout() {
   let LOCATION = useLocation();
   const [ctx, setctx] = [
@@ -70,12 +72,14 @@ export default function Checkout() {
         setctx({ ...ctx, cart: [] });
         setShouldEmpty(true);
         setOrderPlaced(false);
+        toast("Your request has been sent");
       });
   };
   const handleChange = (key, value) => {};
   return (
     <div className="fade-in">
       <TopSlider />
+      <ToastContainer />
       <div className="container py-4">
         <div className="section-title">
           <h1 className="text-uppercase">checkout</h1>

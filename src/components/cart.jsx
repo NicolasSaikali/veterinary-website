@@ -29,10 +29,7 @@ export default function Cart(props) {
               </h1>
             </div>
             <div className="w-100 py-3"></div>
-            <div
-              className="overflow-auto custom-scroll px-1"
-              style={{ maxHeight: "80vh" }}
-            >
+            <div className="px-1">
               <div className="w-100 d-flex justify-content-center"></div>
               {ctx.cart.length === 0 ? (
                 <div>
@@ -68,33 +65,35 @@ export default function Cart(props) {
               <div className="w-100 py-3"></div>
               <div className="cart-controls">
                 {ctx.cart.length > 0 && (
-                  <div>
-                    <Link
-                      to={{
-                        pathname: "/checkout",
-                        state: {
-                          total: total,
-                        },
-                      }}
-                    >
-                      <button
-                        className="btn-custom text-uppercase bg-green-dark text-light border-0 p-2 w-100 w-md-custom"
-                        onClick={() => {
-                          setctx({ ...ctx, cartOpen: false });
+                  <div className="d-flex justify-content-end">
+                    <div>
+                      <Link
+                        to={{
+                          pathname: "/checkout",
+                          state: {
+                            total: total,
+                          },
                         }}
                       >
-                        proceed to checkout
+                        <button
+                          className="btn-custom text-uppercase bg-green-dark text-light border-0 p-2 w-100 w-md-custom"
+                          onClick={() => {
+                            setctx({ ...ctx, cartOpen: false });
+                          }}
+                        >
+                          proceed to checkout
+                        </button>
+                      </Link>
+                      <button
+                        onClick={() => {
+                          window.location.href = "/";
+                          setctx({ ...ctx, cartOpen: false });
+                        }}
+                        className="d-block btn-custom text-uppercase bg-secondary text-light border-0 p-2 w-100 w-md-custom mt-2"
+                      >
+                        go back
                       </button>
-                    </Link>
-                    <Link
-                      to="/"
-                      onClick={() => {
-                        setctx({ ...ctx, cartOpen: false });
-                      }}
-                      className="d-block btn-custom text-uppercase bg-secondary text-light border-0 p-2 w-100 w-md-custom mt-2"
-                    >
-                      go back
-                    </Link>
+                    </div>
                   </div>
                 )}
               </div>

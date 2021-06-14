@@ -754,8 +754,9 @@ STANDARD UNIVERSAL LOADER
 }
 
 .message {
+    font-size:14px;
     position: relative;
-    padding: 5px 20px;
+    padding: 5px 10px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     margin-top: 10px;
@@ -764,7 +765,7 @@ STANDARD UNIVERSAL LOADER
 .message.from-customer {
     float: left;
     color: white;
-    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
     background: var(--green-lighter);
 }
 
@@ -772,7 +773,7 @@ STANDARD UNIVERSAL LOADER
     float: right;
     background: rgba(187, 187, 187, 0.603);
     color: black;
-    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 
 .chat-messages {
@@ -1259,4 +1260,72 @@ transition:padding-bottom 500ms;
 }
 img.grayscale {
     filter:blur(2px) grayscale(99%) !important;
+}
+.chatbox {
+    position: fixed !important;
+    bottom: 0px;
+    right: 3%;
+    z-index: 10;
+}
+@media (max-width:574px){
+    .chatbox {
+    right:15% !important;
+    }
+}
+.chat-indicator{
+    position:absolute;
+    top:0;
+    right:0;
+    font-size:40px;
+    color:white;
+    padding:20px;
+    width:70px;
+    display:flex;
+    height:300px;
+    justify-content: center;
+    align-items: center;
+    height:70px;
+    border-radius:50%;
+    background-color:var(--green-darker) !important;
+    transform: translate(50%,-150%);
+    z-index:100;
+    border:.5px solid white !important;
+    transition:500ms !important;
+}
+.chat-indicator:hover .fa{
+    color:grey !important;
+}
+.chatbox .chat-body .chat-header{
+    text-align: center;
+    padding:5px 0;
+    background:var(--green-darker) !important;
+    color:white;
+}
+.chatbox.active .chat-indicator{
+    transform: translate(50%, -50%);
+
+}
+.chatbox .chat-body{
+
+    width:300px;
+    background:white;
+    height:0;
+    overflow:hidden;
+    transition:height 500ms;
+    border-left: 1px solid var(--green-darker);
+    border-right: 1px solid var(--green-darker);
+
+}
+.chatbox.active .chat-body{
+    height:400px !important;
+}
+.chat-scroll{
+    overflow-y:auto;
+    width:100%;
+    height:300px;
+    padding:10px 5px;
+}
+.char-form{
+    position:fixed;
+    bottom:0;
 }

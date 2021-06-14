@@ -38,6 +38,10 @@ export const defaultGlobalState = {
   firebase: firebase,
   firestore: firebase.firestore(),
   cart: [],
+  user:
+    localStorage.getItem("user") === "" || localStorage.getItem("user") === null
+      ? null
+      : JSON.parse(localStorage.getItem("user")),
 };
 export const globalStateContext = React.createContext(defaultGlobalState);
 export const dispatchStateContext = React.createContext(undefined);

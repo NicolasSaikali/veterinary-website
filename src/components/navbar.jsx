@@ -14,7 +14,8 @@ import Checkout from "./../pages/checkout";
 import TrackOrder from "../pages/track_order";
 import Footer from "./../components/footer";
 import ProductPage from "../pages/product/page";
-
+import ChatBox from "./chatbox";
+import { user } from "firebase-functions/lib/providers/auth";
 export default function Navbar(props) {
   const [ctx, setctx] = [
     React.useContext(globalStateContext),
@@ -30,7 +31,9 @@ export default function Navbar(props) {
         <div className="navbar-custom desktop  d-none d-lg-block">
           <div className="container">
             <div className="row justify-content-between">
-              <div className="col-6 text-left">BRAND</div>
+              <div className="col-6 text-left">
+                <img src="assets/logo.png" height="30" />
+              </div>
               <div className="col-6 text-right d-flex justify-content-end">
                 <Link
                   onClick={() => {
@@ -70,6 +73,12 @@ export default function Navbar(props) {
                     </div>
                   </div>
                 </Link>
+                <div
+                  className="text-light text-bold bold"
+                  style={{ fontSize: 11 }}
+                >
+                  {ctx.user !== null ? ctx.user.displayName : ""}
+                </div>
               </div>
             </div>
           </div>
@@ -136,7 +145,6 @@ export default function Navbar(props) {
             </div>
           </div>
         </div>
-
         <Switch>
           <Route path="/track-order" exact component={TrackOrder} />
           <Route path="/checkout" exact component={Checkout} />
@@ -149,6 +157,7 @@ export default function Navbar(props) {
           />
         </Switch>
       </Router>
+      <ChatBox />
       <Footer />
     </React.Fragment>
   );
